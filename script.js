@@ -74,8 +74,8 @@ console.log(submissions);
 //  Functionality: update an object’s score in the array at the specified index. Use conditional statements to set the value for the passed property to true if the score is greater than or equal to 60 and false otherwise.
 
 const editSubmission = (array, index, score) => {
-  // submission[4].name = 100;
-  array[index].scoree = score;
+  // submissions[4].name = 100;
+  array[index].score = score;
   // sumbissions.passed = 100 >= 60 = true
   array[index].passed = score >= 60;
 };
@@ -96,7 +96,7 @@ const findSubmissionByName = (array, name) => {
 
 console.log(findSubmissionByName(submissions, "Jessica"));
 
-// ??? 7. Declare a function named findLowestScore
+// 7. Declare a function named findLowestScore
 //  Parameter(s): array
 //  Functionality: return the object in the array that has the lowest score. Use the forEach method to loop through the whole array.
 
@@ -132,6 +132,16 @@ const findAverageScore = (array) => {
 
 console.log(findAverageScore(submissions));
 
+// FOR...OF LOOP:
+// const findAverageScore = (array) => {
+//   let sum = 0;
+//   for (let quiz of array) {
+//     sum += quiz.score;
+//   }
+//   return sum /array.length;
+// };
+// console.log(findAverageScore(submissions));
+
 // 9. Declare a function named filterPassing
 // Parameter(s): array
 // Functionality: return a new array using the filter method. The filter method should find objects in the array that have passing scores.
@@ -147,3 +157,73 @@ console.log(filterPassing(submissions));
 const filter90AndAbove = (array) => array.filter((item) => item.score >= 90);
 
 console.log(filter90AndAbove(submissions));
+
+// DOING THE SAME THING, BUT CREATING A NEW VARIABLE FOR THE NEW ARRAY
+// const filter90AndAbove = (array) => {
+//   let newArray = array.filter((item) => {
+//     return item.score >= 90;
+//   });
+//   return newArray;
+// };
+//
+
+// NOTES:
+
+// const names = ["mitch", "cameron", "another"];
+// console.log(names[1])
+
+// [] after a word, accesses a part of an array
+
+// const newObject = {
+//   name: "Mitch",
+// }
+// console.log(newObject["name"]);
+// PREFERRED console.log(newObject.name)
+// ***** .name can never be dynamic *****
+
+// [] access a part of an object
+
+// EXTENDED CHALLENGES:
+// 1. Create a function named createRange
+// Parameter(s): start, end
+// Functionality: construct and return an array of integers starting with the start parameter and ending at the end parameter. e.g createRange(2, 5) returns [2, 3, 4, 5].
+
+const createRange = (start, end) => {
+  let newArray = [];
+  // start of an empty array that has no values
+  for (let i = start; i <= end; i++) {
+    newArray.push(i);
+  }
+  return newArray;
+};
+
+console.log(createRange(2, 5));
+
+// 2. Create a function named countElements
+// Parameter(s): array (an array of strings)
+// Functionality: construct and return an object with the array values as keys and the number of times that key appears in the array as values. e.g. countElements(['a', 'b', 'a', 'c', 'a', 'b']) returns { a: 3, b: 2, c: 1 }.
+
+const countElements = (array) => {
+  let obj = {};
+  array.forEach((letter) => {
+    if (obj[letter] === undefined) {
+      obj[letter] = 1;
+    } else {
+      obj[letter] += 1;
+    }
+  });
+  return obj;
+};
+
+console.log(countElements(["a", "b", "a", "c", "a", "b"]));
+
+// const countElements = (array) => {
+//   let obj = {};
+//   array.forEach((letter) => {
+//     obj[letter] = 0;
+//   });
+//   array.forEach((letter) => {
+//     obj[letter] += 1;
+//   });
+//   return obj;
+// };
